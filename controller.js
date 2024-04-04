@@ -27,9 +27,19 @@ exports.handlePostVideo = async (req, res) => {
 exports.handleGetVideo = async (req, res) => {
     try {
       //VideoPath.deleteOne({fileName: "WhatsApp Video 2024-04-04 at 9.58.42 AM"})
-      VideoPath.findOne({}).sort({createdOn: 1}).then(file64 => res.json(file64.file64))
+      VideoPath.findOne({}).sort({createdOn: 1}).then(file64 => res.json(file64))
 
     } catch (err) {
       console.log(err)
     }
   };
+
+exports.handleStream = async (req, res) => {
+  try {
+    //VideoPath.deleteOne({fileName: "WhatsApp Video 2024-04-04 at 9.58.42 AM"})
+    VideoPath.findOne({}).sort({createdOn: 1}).then(file64 => res.json(file64.file64))
+
+  } catch (err) {
+    console.log(err)
+  }
+};

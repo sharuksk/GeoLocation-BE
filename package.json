@@ -10,7 +10,8 @@
     "mongodb": "^6.5.0",
     "mongoose": "^8.2.4",
     "nodejs-base64-converter": "^1.0.5",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "react-helmet": "^6.1.0"
   },
   "name": "geolocation",
   "version": "1.0.0",
