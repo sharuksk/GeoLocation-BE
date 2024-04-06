@@ -8,9 +8,9 @@ const bodyParser = require("body-parser");
 const router = require("./routes/routers");
 const mongoose = require("mongoose");
 const cors = require("cors")
-
-//const db = "mongodb+srv://sharukajmal2:SharukDB%40123@cluster0.cfzoga8.mongodb.net/GeoLocation";
 const db ="mongodb+srv://sharukajmal2:sharukdb@cluster0.cfzoga8.mongodb.net/GeoLocation"
+// const { MongoClient, ServerApiVersion } = require('mongodb');
+// const url = "mongodb+srv://sharukajmal2:sharukdb@cluster0.cfzoga8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 mongoose
     .connect(db)

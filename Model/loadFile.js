@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
-const BackupSchema = new Schema ({
+const loadFileSchema = new Schema ({
     fileName: {
         type: String,
         required: true
@@ -18,4 +18,4 @@ const BackupSchema = new Schema ({
 });
 
 
-module.exports = Backup = mongoose.model('backup', BackupSchema);
+module.exports = LoadFile = mongoose.model('loadFile', loadFileSchema);
