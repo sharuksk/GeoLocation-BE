@@ -11,10 +11,29 @@ const VideoPathSchema = new Schema ({
         type: String,
         required: true
     },
+    videoOrientation: {
+        type: String,
+        required: true
+    },
     createdOn: {
         type: Date,
         default: Date.now
-    }
+    },
+    bikes: {
+        type: Number
+    },
+    buses: {
+        type: Number
+    },
+    cars: {
+        type: Number
+    },
+    trucks: {
+        type: Number
+    },
+    outputVideo: {
+        type: String
+    },
 });
 
 

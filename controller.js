@@ -16,13 +16,15 @@ exports.handlePostVideo = async (req, res) => {
       await LoadFile.deleteOne({});
       const VideoFile = new VideoPath({
         fileName: req.body.fileName,
-        file64: req.body.file64
+        file64: req.body.file64,
+        videoOrientation: req.body.videoOrientation
         });
         console.log(req.body.fileName);
 
         const fileToLoad = new LoadFile({
             fileName: req.body.fileName,
-            file64: req.body.file64
+            file64: req.body.file64,
+            videoOrientation: req.body.videoOrientation
         });
 
         fileToLoad.save();
@@ -44,34 +46,17 @@ exports.handleGetVideo = async (req, res) => {
     // catch{
     //     res.json("Video Not found")
     // }
-    try {
       //VideoPath.deleteOne({fileName: "WhatsApp Video 2024-04-04 at 9.58.42 AM"})
-        let outputName = await LoadFile.findOne({outputFiles}) 
-        if(outputName.length() > 1){
-          LoadFile.findOne({}).then(file64 => res.json({file64: file64.outputFiles}))
-          console.log("entered");
-        }     
-
-    } catch (err) {
-      LoadFile.findOne({}).then(file64 => res.json(file64))
-    }
-  };
-
-  exports.handleShowVideo = async (req, res) => {
-    try {
-      //VideoPath.deleteOne({fileName: "WhatsApp Video 2024-04-04 at 9.58.42 AM"})
-      if(LoadFile.findOne({outputfile})){
+      try{
         LoadFile.findOne({}).then(file64 => res.json(file64))
       }
-      else{
-        res.json({file64: "File Loading"})
+      catch{
+        console.log("Video is not available")
       }
-
-    } catch (err) {
-      res.json("err")
-    }
+      
   };
 
+  
 exports.handleStream = async (req, res) => {
   try {
     //VideoPath.deleteOne({fileName: "WhatsApp Video 2024-04-04 at 9.58.42 AM"})
@@ -81,3 +66,16 @@ exports.handleStream = async (req, res) => {
     console.log(err)
   }
 };
+exports.handleChartData = async (req, res) => {
+  try {
+    //VideoPath.deleteOne({fileName: "WhatsApp Video 2024-04-04 at 9.58.42 AM"})
+    VideoPath.find()
+      .then(data => {
+        res.json(data)
+      })
+
+  } catch (err) {
+    console.log(err)
+  }
+};
+
