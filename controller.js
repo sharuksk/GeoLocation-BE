@@ -17,18 +17,18 @@ exports.handlePostVideo = async (req, res) => {
       const VideoFile = new VideoPath({
         fileName: req.body.fileName,
         file64: req.body.file64
-    });
-    console.log(req.body.fileName);
+        });
+        console.log(req.body.fileName);
 
-    const fileToLoad = new LoadFile({
-        fileName: req.body.fileName,
-        file64: req.body.file64
-    });
+        const fileToLoad = new LoadFile({
+            fileName: req.body.fileName,
+            file64: req.body.file64
+        });
 
-    fileToLoad.save();
-    VideoFile.save().then(video => res.json({
-      message: "Base64 Received",
-    }));
+        fileToLoad.save();
+        VideoFile.save().then(video => res.json({
+          message: "Base64 Received",
+        }));
     } catch (err) {
       res.json("error")
     }
@@ -46,15 +46,14 @@ exports.handleGetVideo = async (req, res) => {
     // }
     try {
       //VideoPath.deleteOne({fileName: "WhatsApp Video 2024-04-04 at 9.58.42 AM"})
-      if(LoadFile.findOne({})){
-        LoadFile.findOne({}).then(file64 => res.json(file64))
-      }
-      else{
-        res.json({file64: "File Loading"})
-      }
+        let outputName = await LoadFile.findOne({outputFiles}) 
+        if(outputName.length() > 1){
+          LoadFile.findOne({}).then(file64 => res.json({file64: file64.outputFiles}))
+          console.log("entered");
+        }     
 
     } catch (err) {
-      res.json("err")
+      LoadFile.findOne({}).then(file64 => res.json(file64))
     }
   };
 
