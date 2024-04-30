@@ -34,6 +34,7 @@ app.use(
 
 app.use("/dashboard", router);
 
+
 app.use(bodyParser.json());
 app.listen(port, () => {
   console.log("app is rendereing", port);
